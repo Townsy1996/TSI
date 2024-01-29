@@ -1,15 +1,12 @@
 public class Board {
 
-    private final int[][] gameBoard = new int [10][10];
-    private int numMines = 15;
-
-    public Board(){
-    }
-
-    public void printBoard(){
+    private Cell [][] cells;
+    private int rows;
+    private int columns;
+    private int numberofMines;
 
 
 
-    }
+
 }
 

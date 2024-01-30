@@ -46,9 +46,21 @@ public class Game {
 
         board.createGameBoard();
         board.populateMines();
-        board.printGameBoard();
 
 
+        while(gameIsRunning){
+            board.printGameBoard();
+            System.out.println("Please select your move (row# column#");
+            int row = scan.nextInt();
+            int column = scan.nextInt();
+
+            board.revealCell(row, column);
+
+            if(board.isGameOver()){
+                gameIsRunning = false;
+            }
+
+        }
 
     }
 

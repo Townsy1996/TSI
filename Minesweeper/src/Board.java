@@ -5,13 +5,17 @@ public class Board {
     private Cell [][] cells;
     private int rows;
     private int columns;
-    private int numberofMines;
+    private int numberOfMines;
+    private boolean isGameOver = false;
 
+    public boolean isGameOver() {
+        return isGameOver;
+    }
 
     public Board (int rows, int columns, int numMines){
         this.rows = rows;
         this.columns = columns;
-        this.numberofMines = numMines;
+        this.numberOfMines = numMines;
         this.cells = new Cell [rows][columns];
     }
 
@@ -52,7 +56,7 @@ public class Board {
         Random random = new Random();
         int placedMines = 0;
 
-        while(placedMines < numberofMines){
+        while(placedMines < numberOfMines){
             int randomRow = random.nextInt(rows);
             int randomColumn = random.nextInt(columns);
 
@@ -66,6 +70,8 @@ public class Board {
 
     public void revealCell(int row, int column){
 
+
+
         Cell currentCell = cells[row][column];
 
         if(currentCell.isRevealed() || currentCell.isFlagged()){
@@ -74,7 +80,12 @@ public class Board {
 
         currentCell.setRevealed(true);
 
-        
+        if(currentCell.isAMine()){
+            System.out.println("Game Over! You hit a mine.");
+            isGameOver = true;
+        }
+
+
 
 
 

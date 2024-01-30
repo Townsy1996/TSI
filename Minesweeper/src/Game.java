@@ -40,6 +40,7 @@ public class Game {
             } else {
                 System.out.println("Invalid difficulty. Exiting game.");
                 break;
+
             }
 
         }
@@ -50,7 +51,7 @@ public class Game {
 
         while(gameIsRunning){
             board.printGameBoard();
-            System.out.println("Please select your move (row# column#");
+            System.out.println("Please select your move (row# press enter, column# press enter");
             int row = scan.nextInt();
             int column = scan.nextInt();
 
@@ -58,7 +59,10 @@ public class Game {
 
             if(board.isGameOver()){
                 gameIsRunning = false;
+                board.printGameBoard();
             }
+
+
 
         }
 

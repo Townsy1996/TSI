@@ -25,8 +25,6 @@ public class Board {
 
     public void printGameBoard(){
 
-
-
         System.out.println("Current Board State:");
 
         System.out.print("  ");
@@ -65,6 +63,24 @@ public class Board {
         }
 
     }
+
+    /*
+    public void printBoardForTesting() {
+        System.out.println("Board After Placing Mines:");
+
+        for (int row = 0; row < rows; row++) {
+            for (int col = 0; col < columns; col++) {
+                if (cells[row][col].isAMine()) {
+                    System.out.print("* ");
+                } else {
+                    System.out.print(". ");
+                }
+            }
+            System.out.println();
+        }
+    }
+
+     */
 
 
 

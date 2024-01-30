@@ -107,11 +107,30 @@ public class Board {
 
         } else {
             calculateAdjacentMines(row, column);
+            checkForWin();
         }
         if (currentCell.getMineNeighbours() == 0) {
             revealAdjacentCells(row, column);
         }
 
+    }
+
+    public void checkForWin() {
+        int unrevealedNonMineCells = 0;
+
+        for (int i = 0; i < rows; i++) {
+            for (int j = 0; j < columns; j++) {
+                Cell currentCell = cells[i][j];
+                if (!currentCell.isRevealed() && !currentCell.isAMine()) {
+                    unrevealedNonMineCells++;
+                }
+            }
+        }
+
+        if (unrevealedNonMineCells == 0) {
+            System.out.println("Congratulations! You've won!");
+            isGameOver = true;
+        }
     }
     private void revealAdjacentCells(int row, int column) {
         for (int i = -1; i <= 1; i++) {

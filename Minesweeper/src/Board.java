@@ -1,3 +1,5 @@
+import java.util.Random;
+
 public class Board {
 
     private Cell [][] cells;
@@ -24,17 +26,16 @@ public class Board {
     public void printGameBoard(){
 
 
-        // Print rows
-        System.out.println("Current Board:");
 
-        // Print column numbers
+        System.out.println("Current Board State:");
+
         System.out.print("  ");
         for (int col = 0; col < columns; col++) {
             System.out.print(col + " ");
         }
         System.out.println();
 
-        // Print rows
+
         for (int row = 0; row < rows; row++) {
             System.out.print(row + "|");
             for (int col = 0; col < columns; col++) {
@@ -47,6 +48,22 @@ public class Board {
             }
             System.out.println();
         }
+    }
+
+    public void populateMines(){
+        Random random = new Random();
+        int placedMines = 0;
+
+        while(placedMines < numberofMines){
+            int randomRow = random.nextInt(rows);
+            int randomColumn = random.nextInt(columns);
+
+            if (!cells[randomRow][randomColumn].isAMine()) {
+                cells[randomRow][randomColumn].setAMine(true);
+                placedMines++;
+            }
+        }
+
     }
 
 

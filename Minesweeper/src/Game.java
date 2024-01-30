@@ -21,6 +21,9 @@ public class Game {
         // Game logic
         while(gameIsRunning){
             board.printGameBoard();
+
+
+
             System.out.println("Please select your move (row# press enter, column# press enter");
             int row = scan.nextInt();
             int column = scan.nextInt();

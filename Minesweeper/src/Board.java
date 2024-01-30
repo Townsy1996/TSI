@@ -64,6 +64,25 @@ public class Board {
 
     }
 
+    public void revealCell(int row, int column){
+
+        Cell currentCell = cells[row][column];
+
+        if(currentCell.isRevealed() || currentCell.isFlagged()){
+            return;
+        }
+
+        currentCell.setRevealed(true);
+
+        
+
+
+
+
+
+
+    }
+
     /*
     public void printBoardForTesting() {
         System.out.println("Board After Placing Mines:");

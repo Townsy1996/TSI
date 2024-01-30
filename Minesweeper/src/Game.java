@@ -44,9 +44,9 @@ public class Game {
 
         }
 
-        
-
-
+        board.createGameBoard();
+        board.populateMines();
+        board.printGameBoard();
 
 
 

@@ -67,6 +67,30 @@ public class Board {
         }
 
     }
+    private boolean isValidCell(int row, int col) {
+        return row >= 0 && row < rows && col >= 0 && col < columns;
+    }
+
+    public void calculateAdjacentMines(int row, int column) {
+        Cell curentCell = cells[row][column];
+        if (curentCell.isRevealed() && !curentCell.isAMine()) {
+            int adjacentMines = 0;
+
+            for (int i = -1; i <= 1; i++) {
+                for (int j = -1; j <= 1; j++) {
+                    int newRow = row + i;
+                    int newCol = column + j;
+
+                    if (isValidCell(newRow, newCol) && cells[newRow][newCol].isAMine()) {
+                        adjacentMines++;
+
+                    }
+                }
+            }
+
+            curentCell.setMineNeighbours(adjacentMines);
+        }
+    }
 
     public void revealCell(int row, int column){
 
@@ -83,38 +107,11 @@ public class Board {
         if(currentCell.isAMine()){
             System.out.println("Game Over! You hit a mine.");
             isGameOver = true;
+        }else{
+            calculateAdjacentMines(row, column);
         }
 
-
-
-
-
-
-
-
     }
-
-    /*
-    public void printBoardForTesting() {
-        System.out.println("Board After Placing Mines:");
-
-        for (int row = 0; row < rows; row++) {
-            for (int col = 0; col < columns; col++) {
-                if (cells[row][col].isAMine()) {
-                    System.out.print("* ");
-                } else {
-                    System.out.print(". ");
-                }
-            }
-            System.out.println();
-        }
-    }
-
-     */
-
-
-
-
 
 }
 
